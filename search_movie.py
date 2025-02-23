@@ -11,7 +11,8 @@ import couchbase.search as search
 from couchbase.vector_search import VectorQuery, VectorSearch
 from datetime import timedelta
 
-load_dotenv(dotenv_path="config/.env")
+if not os.getenv("DB_CONN_STR"):
+    load_dotenv(dotenv_path="config/.env")
 
 
 # text to data for search filter(using google gen AI)
