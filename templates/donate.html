@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmfields</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='/images/apple-touch-icon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='/images/favicon-32x32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='/images/favicon-16x16.png') }}" />
+    <link rel="manifest" href="i/images/site.webmanifest" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+       
+    <script
+      src="https://kit.fontawesome.com/df1db59fe6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <!-- Left nav -->
+        <ul class="left-nav">
+          <li>
+            <a class="link" href="donate.html">Donate</a>
+          </li>
+        </ul>
+
+        <!-- Right nav -->
+        <ul class="right-nav">
+          <li>
+            <a class="link" href="messages.html">Messages</a>
+          </li>
+          <li>
+            <a class="link" href="community.html">Community</a>
+          </li>
+          <li>
+            <div class="circle-shadow">
+              <a class="menu-icon" href=""><i class="fa-solid fa-bars"></i></a>
+            </div>
+          </li>
+          <li>
+            <div class="circle-shadow">
+              <a class="user-icon" href=""><span>K</span></a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>

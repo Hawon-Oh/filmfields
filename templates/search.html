@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Filmfields</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='/images/apple-touch-icon.png') }}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='/images/favicon-32x32.png') }}" />
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='/images/favicon-16x16.png') }}" />
+    <link rel="manifest" href="i/images/site.webmanifest" />
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
+       
+    <script
+      src="https://kit.fontawesome.com/df1db59fe6.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar">
+        <!-- Left nav -->
+        <ul class="left-nav">
+            <li>
+                <!-- Logo -->
+                <a href="{{ url_for('index') }}">
+                    <img class="logo" src="{{ url_for('static', filename='images/logo.png')}}" alt="Filmfield logo Image" />
+                </a>    
+            </li>
+            <!-- Search bar -->
+            <li>
+                <div class="search-bar">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <!-- <input class="search-input" type="text" />-->
+                    <input id="search-movie" class="truncate" type="search" name="query" spellcheck="false" placeholder="Search with AI..." required style="width: 100%; padding-right: 15px;">
+                    <i class="fa-solid fa-keyboard" title="Keyboard"></i>
+                    <i class="fa-solid fa-microphone" title="Microphone"></i>
+                </div>
+            </li>
+        </ul>
+
+        <!-- Right nav -->
+        <ul class="right-nav">
+          <li>
+            <a class="link" href="messages.html">Messages</a>
+          </li>
+          <li>
+            <a class="link" href="community.html">Community</a>
+          </li>
+          <li>
+            <div class="circle-shadow">
+              <a class="menu-icon" href=""><i class="fa-solid fa-bars"></i></a>
+            </div>
+          </li>
+          <li>
+            <div class="circle-shadow">
+              <a class="user-icon" href=""><span>K</span></a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  
+    <!-- Main content -->
+    <div class="content-wrapper">
+      <p style="margin: 15px;">{{ data|length }} results found</p>
+      {% for result in data %}
+      {% set movie = result[0] %}
+      {% set score = result[1] %}
+      <div class="movie-box">
+          <h3>{{ movie.Series_Title }} ({{ movie.Released_Year }})</h3>
+          <div>
+            <img class="movie-poster" src="{{ movie.Poster_Link }}" alt="Movie Poster" onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/no_image.png') }}';">
+
+              
+              <div>
+                  <p><b>Runtime:</b> {{ movie.Runtime }}</p>
+                  <p><b>Rating:</b> {{ movie.IMDB_Rating }}</p>
+                  <p><b>Relevance:</b> {{ score }}</p>
+                  <p><b>Overview:</b> {{ movie.Overview }}</p>
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+
+    </div> <!-- content-wrapper -->
+  </body>
+</html>
